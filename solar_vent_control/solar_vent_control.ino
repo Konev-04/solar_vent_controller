@@ -14,7 +14,7 @@ void setup() {
   fan_1.attach();
   fan_2.attach();
   int tem = update_temp();
-  //
+  tem = fan_1.getSpeed();
 
 }
 
@@ -23,7 +23,7 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  //
+  ticers();
   
 }
 

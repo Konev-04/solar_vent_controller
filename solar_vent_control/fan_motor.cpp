@@ -8,7 +8,7 @@
     digitalWrite(_pin_second_speed, 0);
   }
 
-  void fan_motor::setspeed(int speed) {
+  void fan_motor::setSpeed(int speed) {
     _speed = speed;
     switch (_speed) {
       case 0: {
@@ -29,9 +29,9 @@
     }
   }
 
-  // int getspeed() {
-  //   return _speed;
-  // }
+  int fan_motor::getSpeed() {
+    return _speed;
+  }
 
    void fan_motor::speeds_fans_2s(int speed, int* fan_1st, int* fan_2st, bool preoritet) {
     if (speed > 5) {speed = 5;}
