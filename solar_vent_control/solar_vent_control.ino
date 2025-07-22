@@ -24,6 +24,7 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   ticers();
+  //
   
 }
 
@@ -64,13 +65,13 @@ void loop() {
 
 
 
-  // for (int i = 0, ii = 0; ii < 2; i++) {
+  //  for (int i = 0, ii = 0; ii < 2; i++) {
   //   if (i > 5) {i = 0; ii++;}
-  //   int fanSpeed_1;
-  //   int fanSpeed_2;
-  //   fan_motor::speeds_fans_2s(i, &fanSpeed_1, &fanSpeed_2, ii);
-  //   fan_1.setspeed(fanSpeed_1);
-  //   fan_2.setspeed(fanSpeed_2);
+  //   // int fanSpeed_1;
+  //   // int fanSpeed_2;
+  //   fan_motor::speeds_fans_2s(i, fan_1, fan_2, ii);
+  //   // fan_1.setspeed(fanSpeed_1);
+  //   // fan_2.setspeed(fanSpeed_2);
   //   delay(700);
   // }
 
