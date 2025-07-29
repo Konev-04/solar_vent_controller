@@ -1,9 +1,5 @@
 
-// #include <GyverDBFile.h>
-
-#include "fan_motor.h"
 #include "solar_vent_control.h"
-// #include "temp_reed.h"
 
 
 fan_motor fan_1(1, 2);
@@ -11,19 +7,17 @@ fan_motor fan_2(3, 4);
 
 
 void setup() {
+  Serial.begin(112500);
   fan_1.attach();
   fan_2.attach();
-  int tem = update_temp();
-  tem = fan_1.getSpeed();
+  temp_setup(&solar_vent_speed);
 
 }
 
-
-
-
 void loop() {
   // put your main code here, to run repeatedly:
-  ticers();
+  solar_temp_out = update_temp();
+  Serial.println(solar_temp_out); delay(500);
   //
   
 }

@@ -33,7 +33,7 @@
     return _speed;
   }
 
-   void fan_motor::speeds_fans_2s(int speed, fan_motor& fan_1st, fan_motor& fan_2st, bool preoritet) {
+  void fan_motor::speeds_fans_2s(int speed, fan_motor& fan_1st, fan_motor& fan_2st, bool preoritet) {
     if (speed > 5) {speed = 5;}
     int fan_f[][6] = {{0, 0, 0, 1, 1, 2}, 
                       {0, 1, 2, 1, 2, 2}};
