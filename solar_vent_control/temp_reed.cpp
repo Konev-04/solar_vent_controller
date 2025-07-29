@@ -9,11 +9,13 @@ static float temp_rez = -55;
 static int* _fS;
 
 void tempGet() {
+  float promTemp = -55;
   if (*_fS) {
     // температура с двух датчиков
   } else {
     // температура с одного датчика
   }
+  // temp_rez = filter(promTemp);
 }
 void tempPing() {
   // ping 10b20
