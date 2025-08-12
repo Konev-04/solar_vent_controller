@@ -1,24 +1,43 @@
 
 #include "solar_vent_control.h"
+// #include "reguliator.ino"
 
 
 fan_motor fan_1(1, 2);
 fan_motor fan_2(3, 4);
+temps_out terms_out;
 
 
 void setup() {
-  Serial.begin(112500);
+
+#ifdef ESP32
+    LittleFS.begin(true);
+#else
+    LittleFS.begin();
+#endif
+  setts.begin();
+
+  setts.init(keys::sound_sdvig, 15);  //инициализация бд с настройками
+
+  tempSets sets;
+  sets.termON = 30;sets.termOFF = 27;sets.termSdvig = 3;
+  setts.init(keys::Stemp_abs, sets); // значения по умолчунию для абс режима
+  sets.termON = 7;sets.termOFF = 3;sets.termSdvig = 5;
+  setts.init(keys::Stemp_diff, sets);// тоже для диф режима
+
+  Serial.begin(112500);//serial
   fan_1.attach();
   fan_2.attach();
-  temp_setup(&solar_vent_speed);
+  temp_setup(&terms_out);
+  tmr_reguliator.startInterval(300000, reguliaoring);
 
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  solar_temp_out = update_temp();
-  Serial.println(solar_temp_out); delay(500);
-  //
+  update_temp();
+  Serial.println(solar_vent_speed); delay(1000);
+  reguliator_tick();
   
 }
 
@@ -29,45 +48,6 @@ void loop() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// // struct 
-// auto rert(int i) {
-//   struct ret {int r1; int r2; };
-//   return ret {i*2, i*3};
-// }
-
-
-
-
-  //  for (int i = 0, ii = 0; ii < 2; i++) {
-  //   if (i > 5) {i = 0; ii++;}
-  //   // int fanSpeed_1;
-  //   // int fanSpeed_2;
-  //   fan_motor::speeds_fans_2s(i, fan_1, fan_2, ii);
-  //   // fan_1.setspeed(fanSpeed_1);
-  //   // fan_2.setspeed(fanSpeed_2);
-  //   delay(700);
-  // }
 
 
 
