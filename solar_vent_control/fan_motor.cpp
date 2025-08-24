@@ -8,7 +8,7 @@
     digitalWrite(_pin_second_speed, 0);
   }
 
-  void fan_motor::setspeed(int speed) {
+  void fan_motor::setSpeed(int speed) {
     _speed = speed;
     switch (_speed) {
       case 0: {
@@ -29,22 +29,22 @@
     }
   }
 
-  // int getspeed() {
-  //   return _speed;
-  // }
+  int fan_motor::getSpeed() {
+    return _speed;
+  }
 
-   void fan_motor::speeds_fans_2s(int speed, int* fan_1st, int* fan_2st, bool preoritet) {
+  void fan_motor::speeds_fans_2s(int speed, fan_motor& fan_1st, fan_motor& fan_2st, bool preoritet) {
     if (speed > 5) {speed = 5;}
     int fan_f[][6] = {{0, 0, 0, 1, 1, 2}, 
                       {0, 1, 2, 1, 2, 2}};
     // int fan_s[][] = {{0, 0, 0, 1, 1, 2},  // для другого режима
     //                  {0, 1, 2, 1, 2, 2}};
     if (preoritet) {
-      *fan_1st = fan_f[0][speed];
-      *fan_2st = fan_f[1][speed];
+      fan_1st.setSpeed(fan_f[0][speed]);
+      fan_2st.setSpeed(fan_f[1][speed]);
     } else {
-      *fan_1st = fan_f[1][speed];
-      *fan_2st = fan_f[0][speed];
+      fan_1st.setSpeed(fan_f[1][speed]);
+      fan_2st.setSpeed(fan_f[0][speed]);
     }
   }
 
