@@ -42,7 +42,12 @@ void reguliaoring() {
   } else if (reg_temp < this_settings.termOFF) {
     solar_vent_speed--;
   }
-  solar_vent_speed = constrain(solar_vent_speed, 0, 7);
+  solar_vent_speed = constrain(solar_vent_speed, 0, 5);
+  
+  Serial.print(reg_temp); Serial.print(" / ");
+  Serial.print(this_settings.termON); Serial.print(" / ");
+  Serial.print(this_settings.termOFF); Serial.print(" / ");
+  Serial.println(solar_vent_speed);
   // return retSpeed;
   // speeds_fans_2s
   fan_motor::speeds_fans_2s(solar_vent_speed, fan_1, fan_2, setts[keys::preoritet]);
